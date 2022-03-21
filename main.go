@@ -315,6 +315,7 @@ func main()  {
 
 	// A.14.7. Pemanfaatan Label Dalam Perulangan
 
+	// akan memberhentikan looping yg di bawah label
 	// outerLoop:
 	// for i := 0; i < 5; i++ {
 	// 	for j := 0; j < 5; j++ {
@@ -324,6 +325,400 @@ func main()  {
 	// 		fmt.Print("matriks [", i, "][", j, "]", "\n")
 	// 	}
 	// }
+
+	// A.15. Array
+
+	// pengisian elemen array harus sesuai dengan alokasi slot nya, jika melebihi slot maka akan error
+	// var names [4]string
+	// names[0] = "trafalgar"
+	// names[1] = "d"
+	// names[2] = "water"
+	// names[3] = "law"
+
+	// fmt.Println(names[0], names[1], names[2], names[3])
+
+	// Inisialisasi Nilai Awal Array
+
+	// var fruits = [4]string{"apple", "grape", "banana", "melon"}
+
+	// fmt.Println("Jumlah element ", len(fruits))   len() --> untuk menghitung jumlah array
+	// fmt.Println("Isi semua element ", fruits)
+
+	// A.15.3. Inisialisasi Nilai Array Dengan Gaya Vertikal
+
+	// 	var fruits [4]string
+
+	// cara horizontal
+	// fruits  = [4]string{"apple", "grape", "banana", "melon"}
+
+	// cara vertikal
+	// fruits  = [4]string{
+	// 		"apple",
+	// 		"grape",
+	// 		"banana",
+	// 		"melon",
+	// }
+
+	// A.15.4. Inisialisasi Nilai Awal Array Tanpa Jumlah Elemen
+
+	// var numbers = [...]int{2, 3, 2, 4, 3}
+
+	// fmt.Println("data array \t:", numbers)
+	// fmt.Println("jumlah elemen \t:", len(numbers))
+
+	// A.15.5. Array Multidimensi
+
+	// Khusus untuk array yang merupakan sub dimensi atau elemen, boleh tidak dituliskan jumlah datanya.
+
+	// var numbers1 = [2][3]int{[3]int{3, 2, 3}, [3]int{3, 4, 5}}
+	// var numbers2 = [2][3]int{{3, 2, 3}, {3, 4, 5}}
+
+	// fmt.Println("numbers1", numbers1)
+	// fmt.Println("numbers2", numbers2)
+
+	// A.15.6. Perunlangan Element Array Menggunakan Keyword "for"
+
+	// var fruits = [4]string{"apple", "grape", "banana", "melon"}
+
+	// for i := 0; i < len(fruits); i++ {
+	// 	fmt.Println("element ", i, fruits[i])
+	// }
+
+	// A.15.7. Perulangan Elemen Array Menggunakan Keyword for - range
+
+	// var fruits = [4]string{"apple", "grape", "banana", "melon"}
+
+	// for i, fruit := range fruits {
+	// 	fmt.Printf("elemen %d : %s\n", i, fruit)
+	// }
+
+	// A.15.8. Penggunaan Variabel Underscore _ Dalam for - range
+
+	// jika variabelnya tidak digunakan, menggunakan underscore ( _ )
+
+	// var fruits = [4]string{"apple", "grape", "banana", "melon"}
+
+	// for _, fruit := range fruits {
+	// 	fmt.Printf("nama buah : %s\n", fruit)
+	// }
+
+	// jika elemennya tidak digunakan
+
+	// for i, _ := range fruits { }
+	// atau
+	// for i := range fruits { }
+
+	// A.15.9. Alokasi Elemen Array Menggunakan Keyword make
+
+	// var fruits = make([]string, 2)
+	// fruits[0] = "apple"
+	// fruits[1] = "manggo"
+
+	// fmt.Println(fruits)
+
+	// A.16. Slice
+
+	// Slice adalah reference elemen array. Slice bisa dibuat, atau bisa juga dihasilkan dari manipulasi sebuah array ataupun slice lainnya
+
+	// A.16.1 Inisialisasi Slice
+
+	// var fruits = []string{"apple", "grape", "banana", "melon"}
+
+	// var fruitsA = []string{"apple", "grape"}      // slice
+	// var fruitsB = [2]string{"banana", "melon"}    // array
+	// var fruitsC = [...]string{"papaya", "grape"}  // array
+
+	// A.16.2. Hubungan Slice Dengan Array & Operasi Slice
+
+	// var fruits = []string{"apple", "grape", "banana", "melon"}
+
+	// fruits[0:2]	[apple, grape]	semua elemen mulai indeks ke-0, hingga sebelum indeks ke-2
+	// fruits[0:4]	[apple, grape, banana, melon]	semua elemen mulai indeks ke-0, hingga sebelum indeks ke-4
+	// fruits[0:0]	[]	menghasilkan slice kosong, karena tidak ada elemen sebelum indeks ke-0
+	// fruits[4:4]	[]	menghasilkan slice kosong, karena tidak ada elemen yang dimulai dari indeks ke-4
+	// fruits[4:0]	[]	error, pada penulisan fruits[a,b] nilai a harus lebih besar atau sama dengan b
+	// fruits[:]	[apple, grape, banana, melon]	semua elemen
+	// fruits[2:]	[banana, melon]	semua elemen mulai indeks ke-2
+	// fruits[:2]	[apple, grape]	semua elemen hingga sebelum indeks ke-2
+
+	// A.16.3. Slice Merupakan Tipe Data Reference
+
+	// Setiap perubahan yang terjadi di elemen slice baru, akan berdampak juga pada elemen slice lama yang memiliki referensi yang sama.
+
+	// var fruits = []string{"apple", "grape", "banana", "melon"}
+
+	// var aFruits = fruits[0:3]
+	// var bFruits = fruits[1:4]
+
+	// var aaFruits = aFruits[1:2]
+	// var baFruits = bFruits[0:1]
+
+	// fmt.Println(fruits)   // [apple grape banana melon]
+	// fmt.Println(aFruits)  // [apple grape banana]
+	// fmt.Println(bFruits)  // [grape banana melon]
+	// fmt.Println(aaFruits) // [grape]
+	// fmt.Println(baFruits) // [grape]
+
+	// Buah "grape" diubah menjadi "pinnaple"
+	// baFruits[0] = "pinnaple"
+
+	// fmt.Println(fruits)   // [apple pinnaple banana melon]
+	// fmt.Println(aFruits)  // [apple pinnaple banana]
+	// fmt.Println(bFruits)  // [pinnaple banana melon]
+	// fmt.Println(aaFruits) // [pinnaple]
+	// fmt.Println(baFruits) // [pinnaple]
+
+	// A.16.4. Fungsi lens()
+
+	// untuk menghitung jumlah array
+
+	// var fruits = []string{"apple", "grape", "banana", "melon"}
+	// fmt.Println(len(fruits)) // 4
+
+	// A.16.5 Fungsi cap()
+
+	// Fungsi cap() digunakan untuk menghitung lebar atau kapasitas maksimum slice.
+
+	// var fruits = []string{"apple", "grape", "banana", "melon"}
+	// fmt.Println(len(fruits))  // len: 4
+	// fmt.Println(cap(fruits))  // cap: 4
+
+	// var aFruits = fruits[0:3]
+	// fmt.Println(len(aFruits)) // len: 3
+	// fmt.Println(cap(aFruits)) // cap: 4
+
+	// var bFruits = fruits[1:4]
+	// fmt.Println(len(bFruits)) // len: 3
+	// fmt.Println(cap(bFruits)) // cap: 3
+
+	// A.16.6. Fungsi append()
+
+	// digunakan untuk menambahkan elemen pada slice. Elemen baru tersebut diposisikan setelah indeks paling akhir.
+
+	// A.16.7. Fungsi copy()
+
+	// Fungsi copy() digunakan untuk men-copy elements slice pada src (parameter ke-2), ke dst (parameter pertama).
+	// copy(dst, src)
+
+	// dst := make([]string, 3)
+	// src := []string{"watermelon", "pinnaple", "apple", "orange"}
+	// n := copy(dst, src)
+
+	// fmt.Println(dst) // watermelon pinnaple apple
+	// fmt.Println(src) // watermelon pinnaple apple orange
+	// fmt.Println(n)   // 3
+
+	// A.16.8. Pengaksesan Elemen Slice Dengan 3 Indeks
+
+	// 3 index adalah teknik slicing elemen yang sekaligus menentukan kapasitasnya. Cara menggunakannnya yaitu dengan menyisipkan angka kapasitas di belakang, seperti fruits[0:1:1]. Angka kapasitas yang diisikan tidak boleh melebihi kapasitas slice yang akan di slicing.
+
+	// var fruits = []string{"apple", "grape", "banana", "melon", "orange"}
+	// var bFruits = fruits[0:2:4]
+
+	// fmt.Println(bFruits)      // ["apple", "grape"]
+	// fmt.Println(len(bFruits)) // len: 2
+	// fmt.Println(cap(bFruits)) // cap: 4
+
+	// A.17. Map
+
+	// Map adalah tipe data asosiatif yang ada di Go, berbentuk key-value pair. Untuk setiap data (atau value) yang disimpan, disiapkan juga key-nya.
+
+	// A.17.1. Penggunaan Map
+
+	// var chicken map[string]int
+	// chicken = map[string]int{}
+
+	// chicken["januari"] = 50
+	// chicken["februari"] = 40
+
+	// fmt.Println("januari", chicken["januari"]) // januari 50
+	// fmt.Println("mei",     chicken["mei"])     // mei 0
+
+	// A.17.2. Inisialisasi Nilai Map
+
+	// Zero value dari map adalah nil
+
+	// var data map[string]int
+	// data["one"] = 1
+	// akan muncul error!
+
+	// data = map[string]int{}
+	// data["one"] = 1
+	// tidak ada error
+
+	// cara horizontal
+	// var chicken1 = map[string]int{"januari": 50, "februari": 40}
+
+	// cara vertical
+	// var chicken2 = map[string]int{
+	// 		"januari":  50,
+	// 		"februari": 40,
+	// }
+
+	// bisa menggunakanb make dan new
+
+	// var chicken3 = map[string]int{}
+	// var chicken4 = make(map[string]int)
+	// var chicken5 = *new(map[string]int)
+
+	// A.17.3. Iterasi Item Map Menggunakan for - range
+
+	// Item variabel map bisa di iterasi menggunakan for - range. Cara penerapannya masih sama seperti pada slice, pembedanya data yang dikembalikan di tiap perulangan adalah key dan value, bukan indeks dan elemen. Contohnya bisa dilihat pada kode berikut.
+
+	// var chicken = map[string]int{
+	// 		"januari":  50,
+	// 		"februari": 40,
+	// 		"maret":    34,
+	// 		"april":    67,
+	// }
+
+	// for key, val := range chicken {
+	// 		fmt.Println(key, "  \t:", val)
+	// }
+
+	// A.17.4. Menghapus Item Map
+
+	// Fungsi delete() digunakan untuk menghapus item dengan key tertentu pada variabel map
+
+	// var chicken = map[string]int{"januari": 50, "februari": 40}
+
+	// fmt.Println(len(chicken)) // 2
+	// fmt.Println(chicken)
+
+	// delete(chicken, "januari")
+
+	// fmt.Println(len(chicken)) // 1
+	// fmt.Println(chicken)
+
+	// A.17.5. Deteksi Keberadaan Item Dengan Key Tertentu
+
+	// var chicken = map[string]int{"januari": 50, "februari": 40}
+	// var value, isExist = chicken["februari"]
+
+	// if isExist {
+	// 		fmt.Println(value)
+	// } else {
+	// 		fmt.Println("item is not exists")
+	// }
+
+	// A.17.6. Kombinasi Slice & Map
+
+	// var chickens = []map[string]string{
+	// 		map[string]string{"name": "chicken blue",   "gender": "male"},
+	// 		map[string]string{"name": "chicken red",    "gender": "male"},
+	// 		map[string]string{"name": "chicken yellow", "gender": "female"},
+	// }
+
+	// jika menggunakan go versi terbaru
+
+	// 	var chickens = []map[string]string{
+	// 		{"name": "chicken blue",   "gender": "male"},
+	// 		{"name": "chicken red",    "gender": "male"},
+	// 		{"name": "chicken yellow", "gender": "female"},
+	// }
+
+
+	// for _, chicken := range chickens {
+	// 		fmt.Println(chicken["gender"], chicken["name"])
+	// }
+
+	// Dalam []map[string]string, tiap elemen bisa saja memiliki key yang berbeda-beda
+
+	// A.18. Fungsi
+
+	// A.18.1. Penerapan Fungsi
+
+	// package main
+
+	// import "fmt"
+	// import "strings"
+
+	// func main() {
+	// 		var names = []string{"John", "Wick"}
+	// 		printMessage("halo", names)
+	// }
+
+	// func printMessage(message string, arr []string) {
+	// 		var nameString = strings.Join(arr, " ")
+	// 		fmt.Println(message, nameString)
+	// }
+
+	// A.18.2. Fungsi Dengan Return Value / Nilai Balik
+
+	// package main
+
+	// import (
+	// 		"fmt"
+	// 		"math/rand"
+	// 		"time"
+	// )
+
+	// func main() {
+	// 		rand.Seed(time.Now().Unix())
+	// 		var randomValue int
+
+	// 		randomValue = randomWithRange(2, 10)
+	// 		fmt.Println("random number:", randomValue)
+	// 		randomValue = randomWithRange(2, 10)
+	// 		fmt.Println("random number:", randomValue)
+	// 		randomValue = randomWithRange(2, 10)
+	// 		fmt.Println("random number:", randomValue)
+	// }
+
+	// func randomWithRange(min, max int) int {
+	// 		var value = rand.Int() % (max - min + 1) + min
+	// 		return value
+	// }
+
+	// A.18.3. Penggunaan Fungsi rand.Seed()
+
+	// Fungsi ini diperlukan untuk memastikan bahwa angka random yang akan di-generate benar-benar acak. Kita bisa gunakan angka apa saja sebagai nilai parameter fungsi ini (umumnya diisi time.Now().Unix()).
+
+	// A.18.4. Import Banyak Package
+
+	// import "fmt"
+	// import "math/rand"
+	// import "time"
+
+	// atau
+
+	// import (
+	// 		"fmt"
+	// 		"math/rand"
+	// 		"time"
+	// )
+
+	// A.18.5. Deklarasi Parameter Bertipe Data Sama
+
+	// func nameOfFunc(paramA type, paramB type, paramC type) returnType
+	// func nameOfFunc(paramA, paramB, paramC type) returnType
+
+	// func randomWithRange(min int, max int) int
+	// func randomWithRange(min, max int) int
+
+	// A.18.6. Penggunaan Keyword return Untuk Menghentikan Proses Dalam Fungsi
+
+	// package main
+
+	// import "fmt"
+
+	// func main() {
+	// 		divideNumber(10, 2)
+	// 		divideNumber(4, 0)
+	// 		divideNumber(8, -4)
+	// }
+
+	// func divideNumber(m, n int) {
+	// 		if n == 0 {
+	// 				fmt.Printf("invalid divider. %d cannot divided by %d\n", m, n)
+	// 				return
+	// 		}
+
+	// 		var res = m / n
+	// 		fmt.Printf("%d / %d = %d\n", m, n, res)
+	// }
+
+
 
 
 
