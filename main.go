@@ -718,6 +718,44 @@ func main()  {
 	// 		fmt.Printf("%d / %d = %d\n", m, n, res)
 	// }
 
+	// A.19. Fungsi Multiple Return
+
+	// Umumnya fungsi hanya memiliki satu buah nilai balik saja. Jika ada kebutuhan di mana data yang dikembalikan harus banyak, biasanya digunakanlah tipe seperti map, slice, atau struct sebagai nilai balik.
+
+	// A.19.1 Penerapan Fungsi Multiple Return
+
+	// package main
+
+	// import "fmt"
+	// import "math"
+
+	// func calculate(d float64) (float64, float64) {
+			// hitung luas
+	// 		var area = math.Pi * math.Pow(d / 2, 2)
+			// hitung keliling
+	// 		var circumference = math.Pi * d
+
+			// kembalikan 2 nilai
+	// 		return area, circumference
+	// }
+
+	// A.19.2 Fungsi Dengan Predefined Return Value
+
+	// 	func calculate(d float64) (area float64, circumference float64) {
+	// 		area = math.Pi * math.Pow(d / 2, 2)
+	// 		circumference = math.Pi * d
+
+	// 		return
+	// }
+
+	// Ada beberapa hal baru dari kode di atas yang perlu dibahas, seperti math.Pow() dan math.Pi. Berikut adalah penjelasannya.
+
+	// • Penggunaan Fungsi math.Pow()
+	// Fungsi math.Pow() digunakan untuk memangkat nilai. math.Pow(2, 3) berarti 2 pangkat 3, hasilnya 8. Fungsi ini berada dalam package math.
+
+	// • Penggunaan Konstanta math.Pi
+	// math.Pi adalah konstanta bawaan package math yang merepresentasikan Pi atau 22/7.
+
 
 
 
